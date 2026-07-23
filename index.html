@@ -31,11 +31,32 @@
     </nav>
     </header>
     <main>
-        <div class="container mt-5 text-center">
-            <h1>Welcome to The Cooking Recipe Hub</h1>
-            <p class="lead">Discover, cook, and share delicious recipes.</p>
+    <!-- Carousel Slider (JS Feature 1) -->
+    <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=400&fit=crop" class="d-block w-100" alt="Food 1">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                    <h5>Delicious Pasta</h5>
+                    <p>Learn how to make authentic Italian pasta.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1490818387583-1b5ba45227fa?w=1200&h=400&fit=crop" class="d-block w-100" alt="Food 2">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                    <h5>Healthy Salads</h5>
+                    <p>Fresh and crispy salads for a healthy lifestyle.</p>
+                </div>
+            </div>
         </div>
-    </main>
+        <button class="carousel-control-prev" type="button" data-bs-target="#recipeCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#recipeCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</main>
     
     <!-- Bootstrap 5 Footer -->
     <footer class="bg-dark text-white text-center py-4 mt-5">
