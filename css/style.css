@@ -11,3 +11,8 @@ body {
 .navbar-custom { background-color: var(--primary-color) !important; }
 .btn-primary { background-color: var(--primary-color); border-color: var(--primary-color); }
 .btn-primary:hover { background-color: var(--accent-color); border-color: var(--accent-color); }
+
+h1, h2, h3, h4, h5 { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; }
+p { line-height: 1.6; }
+.recipe-card { transition: transform 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.recipe-card:hover { transform: translateY(-5px); }
