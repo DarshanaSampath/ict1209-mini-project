@@ -16,3 +16,21 @@ h1, h2, h3, h4, h5 { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-seri
 p { line-height: 1.6; }
 .recipe-card { transition: transform 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 .recipe-card:hover { transform: translateY(-5px); }
+
+/* About Page Premium Styling */
+.about-img-blend {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.about-img-blend:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+.about-text-container {
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(248,249,250,1) 100%);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--primary-color);
+}
