@@ -1,4 +1,4 @@
- 🍽️ The Cooking Recipe Hub (අපේ කෑම)
+ 🍽️ The Cooking Recipe Hub 
 
 Welcome to The Cooking Recipe Hub, a digital platform dedicated to sharing authentic Sri Lankan culinary traditions alongside celebrated global recipes. This project is built for the ICT 1209 - Web Technologies module.
 
