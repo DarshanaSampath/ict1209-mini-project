@@ -29,19 +29,20 @@
     </nav></header>
     <main class="container mt-5">
     <h1 class="text-center mb-4">Our Recipes</h1>
+    <!-- Search Bar -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <input type="text" id="recipeSearch" class="form-control form-control-lg shadow-sm" placeholder="Search recipes by name... (e.g. Kottu, Chicken)">
+        </div>
+    </div>
     
-    <!-- Filter Buttons -->
-    <div class="text-center mb-4" id="filter-buttons">
     <!-- Filter Buttons -->
     <div class="text-center mb-4" id="filter-buttons">
         <button class="btn btn-outline-success active" data-filter="all">All</button>
         <button class="btn btn-outline-success" data-filter="breakfast">Breakfast</button>
-        <button class="btn btn-outline-success" data-filter="brunch">Brunch</button>
         <button class="btn btn-outline-success" data-filter="lunch">Lunch</button>
         <button class="btn btn-outline-success" data-filter="dinner">Dinner</button>
-        <button class="btn btn-outline-success" data-filter="snack">Snack</button>
         <button class="btn btn-outline-success" data-filter="dessert">Dessert</button>
-    </div>
     </div>
 
     <!-- Recipe Grid -->
