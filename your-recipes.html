@@ -36,12 +36,11 @@
                     <h1 class="mb-3 fw-bold">ඔබේ කෑම වට්ටෝරුව එකතු කරන්න</h1>
                     <h6 class="text-muted">Submit your own traditional or modern recipe to share with our community!</h6>
                 </div>
-                
-                <div class="card shadow border-0 rounded-4 p-4 mb-5">
+                <div class="card submit-card p-5 border bg-white">
                     <form id="recipeForm">
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">කෑම එකේ නම (Recipe Name)</label>
+                                <label class="form-label fw-bold">වට්ටෝරුවේ නම (Recipe Name)</label>
                                 <input type="text" class="form-control" placeholder="e.g., Spicy Chicken Curry" required>
                             </div>
                             <div class="col-md-6">
@@ -49,6 +48,7 @@
                                 <select class="form-select" required>
                                     <option value="">Select Category...</option>
                                     <option value="breakfast">Breakfast</option>
+                                    <option value="brunch">Brunch</option>
                                     <option value="lunch">Lunch</option>
                                     <option value="dinner">Dinner</option>
                                     <option value="snack">Snack</option>
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold">හදන ආකාරය (Instructions)</label>
+                            <label class="form-label fw-bold">සාදන ආකාරය (Instructions)</label>
                             <textarea class="form-control" rows="5" placeholder="Explain how to cook this recipe step by step..." required></textarea>
                         </div>
 
