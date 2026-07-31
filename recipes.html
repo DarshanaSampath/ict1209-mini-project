@@ -29,16 +29,21 @@
     </nav></header>
     <main class="container mt-5">
     <h1 class="text-center mb-4">Our Recipes</h1>
-    
-    <!-- Filter Buttons -->
-    <div class="text-center mb-4" id="filter-buttons">
-        <button class="btn btn-outline-success active" data-filter="all">All</button>
-        <button class="btn btn-outline-success" data-filter="breakfast">Breakfast</button>
-        <button class="btn btn-outline-success" data-filter="brunch">Brunch</button>
-        <button class="btn btn-outline-success" data-filter="lunch">Lunch</button>
-        <button class="btn btn-outline-success" data-filter="dinner">Dinner</button>
-        <button class="btn btn-outline-success" data-filter="snack">Snack</button>
-        <button class="btn btn-outline-success" data-filter="dessert">Dessert</button>
+    <!-- Filter & Search Row -->
+    <div class="row align-items-center mb-4">
+        <!-- Filter Buttons -->
+        <div class="col-md-8 text-md-start text-center mb-3 mb-md-0" id="filter-buttons">
+            <button class="btn btn-outline-success active" data-filter="all">All</button>
+            <button class="btn btn-outline-success" data-filter="breakfast">Breakfast</button>
+            <button class="btn btn-outline-success" data-filter="lunch">Lunch</button>
+            <button class="btn btn-outline-success" data-filter="dinner">Dinner</button>
+            <button class="btn btn-outline-success" data-filter="dessert">Dessert</button>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="col-md-4">
+            <input type="text" id="recipeSearch" class="form-control shadow-sm" placeholder="Search recipes...">
+        </div>
     </div>
 
     <!-- Recipes -->
