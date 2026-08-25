@@ -1,3 +1,27 @@
+<?php
+require_once 'includes/db.php';
+require_once 'includes/functions.php';
+
+$success = '';
+$error = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = sanitize($_POST['name']);
+    $email = sanitize($_POST['email']);
+    $message = sanitize($_POST['message']);
+
+    if (empty($name) || empty($email) || empty($message)) {
+        $error = "All fields are required!";
+    } else {
+        $stmt = $pdo->prepare("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)");
+        if ($stmt->execute([$name, $email, $message])) {
+            $success = "Thank you! Your message has been saved to the database successfully.";
+        } else {
+            $error = "Something went wrong. Please try again.";
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,20 +56,27 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h1 class="text-center mb-4 fw-bold">අපිට කියන්න (Contact Us)</h1> 
+            <?php if ($error): ?>
+                <div class="alert alert-danger"><?= $error ?></div>
+            <?php endif; ?>
+            <?php if ($success): ?>
+                <div class="alert alert-success"><?= $success ?></div>
+            <?php endif; ?>
+
             <!-- Contact Form -->
             <div class="card shadow p-4 mb-5">
-                <form id="contactForm">
+                <form id="contactForm" method="POST" action="">
                     <div class="mb-3">
                         <label class="form-label">ඔබේ නම (Full Name)</label>
-                        <input type="text" class="form-control" id="name" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">ඊමේල් ලිපිනය (Email)</label>
-                        <input type="email" class="form-control" id="email" required>
+                        <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">පණිවිඩය (Message)</label>
-                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-success w-100 fw-bold">Send Message</button>
                 </form>

@@ -77,12 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (isValid) {
-            alert("Thank you! Your message has been sent successfully.");
-            contactForm.reset();
-            // Remove validation classes after reset
-            nameInput.classList.remove("is-valid");
-            emailInput.classList.remove("is-valid");
-            messageInput.classList.remove("is-valid");
+            // Actually submit the form to the PHP backend
+            contactForm.submit();
         }
     });
 });
