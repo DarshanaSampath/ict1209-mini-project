@@ -1,3 +1,7 @@
+<?php
+require_once 'includes/db.php';
+require_once 'includes/functions.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +16,7 @@
     <header id="navbar-placeholder">    <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
+            <a class="navbar-brand d-flex align-items-center fw-bold" href="index.php">
                 <img src="images/logo.png" alt="Logo" height="50" class="d-inline-block align-top rounded me-2" style="border-radius: 8px !important;">The Cooking Recipe Hub
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -20,11 +24,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active text-warning fw-bold" href="recipes.html">Recipes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="your-recipes.html">Your Recipes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active text-warning fw-bold" href="recipes.php">Recipes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                    <?php if (isLoggedIn()): ?>
+                        <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link text-danger fw-bold" href="auth/logout.php">Logout (<?= htmlspecialchars($_SESSION['username']); ?>)</a></li>
+                    <?php else: ?>
+                        <li class="nav-item"><a class="nav-link" href="auth/login.php">Login / Register</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -296,6 +305,82 @@
                 </div>
             </div>
         </div>
+         <!-- Sri Lankan Roast Paan (Brunch) -->
+        <div class="col-md-4 recipe-item brunch">
+            <div class="card recipe-card h-100">
+                <img src="images/Recipe images/roast_paan.jpg" class="card-img-top" alt="Roast Paan" height="400" width="300">
+                <div class="card-body">
+                    <span class="badge bg-warning text-dark mb-2">Brunch</span>
+                    <h5 class="card-title">Sri Lankan Roast Paan</h5>
+                    <button class="btn btn-sm btn-primary mt-2">View Recipe</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sourdough Avocado Toast (Brunch) -->
+        <div class="col-md-4 recipe-item brunch">
+            <div class="card recipe-card h-100">
+                <img src="images/Recipe images/avocado_toast.jpg" class="card-img-top" alt="Avocado Toast" height="400" width="300">
+                <div class="card-body">
+                    <span class="badge bg-warning text-dark mb-2">Brunch</span>
+                    <h5 class="card-title">Sourdough Avocado Toast</h5>
+                    <button class="btn btn-sm btn-primary mt-2">View Recipe</button>
+                </div>
+            </div>
+        </div>
+        <!--French Toast-->
+        <div class="col-md-4 recipe-item breakfast brunch">
+            <div class="card recipe-card h-100">
+                <img src="images/Recipe images/french_toast.jpg" class="card-img-top" alt="French Toast" height="400" width="300">
+                <div class="card-body">
+                    <span class="badge bg-warning text-dark mb-2">Breakfast / Brunch</span>
+                    <h5 class="card-title">Classic French Toast</h5>
+                    <button class="btn btn-sm btn-primary mt-2">View Recipe</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic User Submitted Recipes -->
+        <?php
+        try {
+            // Automatically update any legacy 'mains' category to 'lunch'
+            $pdo->query("UPDATE recipes SET category = 'lunch' WHERE category = 'mains'");
+
+            // Query all recipes
+            $stmt = $pdo->query("SELECT r.*, u.username FROM recipes r JOIN users u ON r.user_id = u.id ORDER BY r.created_at DESC");
+            $db_recipes = $stmt->fetchAll();
+
+            foreach ($db_recipes as $recipe) {
+                // Determine badge color/text based on category
+                $cat = strtolower($recipe['category']);
+                $badge_class = 'bg-success'; // default
+                if ($cat == 'breakfast' || $cat == 'brunch') {
+                    $badge_class = 'bg-warning text-dark';
+                } elseif ($cat == 'lunch' || $cat == 'dinner') {
+                    $badge_class = 'bg-info';
+                } elseif ($cat == 'dessert') {
+                    $badge_class = 'bg-danger';
+                }
+
+                // If image path is empty, use a placeholder
+                $img = !empty($recipe['image_path']) ? htmlspecialchars($recipe['image_path']) : 'images/Recipe images/watalappan.jpg';
+                ?>
+                <div class="col-md-4 recipe-item <?php echo htmlspecialchars($recipe['category']); ?>">
+                    <div class="card recipe-card h-100">
+                        <img src="<?php echo $img; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($recipe['title']); ?>" height="400" width="300" style="object-fit: cover;">
+                        <div class="card-body">
+                            <span class="badge <?php echo $badge_class; ?> mb-2"><?php echo ucfirst(htmlspecialchars($recipe['category'])); ?></span>
+                            <h5 class="card-title"><?php echo htmlspecialchars($recipe['title']); ?></h5>
+                            <p class="card-text text-muted mb-1"><small>By: <?php echo htmlspecialchars($recipe['username']); ?></small></p>
+                            <button class="btn btn-sm btn-primary mt-2">View Recipe</button>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+        } catch (PDOException $e) {
+            // Silently handle or log error
+        }
+        ?>
     </div>
 </main>
     <footer class="bg-dark text-white text-center py-4 mt-5">
