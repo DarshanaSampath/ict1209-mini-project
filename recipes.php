@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
 ?>
@@ -61,6 +61,30 @@ require_once 'includes/functions.php';
 
     <!-- Recipes -->
     <div class="row g-4" id="recipe-gallery">
+        <!-- Dynamic Recipes from Database -->
+        <?php
+        $stmt = $pdo->query("SELECT * FROM recipes ORDER BY created_at DESC");
+        $recipes = $stmt->fetchAll();
+        foreach ($recipes as $r):
+        ?>
+        <div class="col-md-4 recipe-item <?= htmlspecialchars(strtolower($r['category'])) ?>">
+            <div class="card recipe-card h-100">
+                <?php if (!empty($r['image_path'])): ?>
+                    <img src="<?= htmlspecialchars($r['image_path']) ?>" class="card-img-top" alt="<?= htmlspecialchars($r['title']) ?>" height="400" width="300" style="object-fit: cover;">
+                <?php else: ?>
+                    <div class="bg-secondary text-white d-flex align-items-center justify-content-center card-img-top" style="height: 400px; width: 100%;">
+                        <span>No Image</span>
+                    </div>
+                <?php endif; ?>
+                <div class="card-body">
+                    <span class="badge bg-warning text-dark mb-2 text-capitalize"><?= htmlspecialchars($r['category']) ?></span>
+                    <h5 class="card-title"><?= htmlspecialchars($r['title']) ?></h5>
+                    <a href="recipe-detail.php?id=<?= $r['id'] ?>" class="btn btn-sm btn-primary mt-2">View Recipe</a>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+        
         <!-- Kiribath -->
         <div class="col-md-4 recipe-item breakfast brunch">
             <div class="card recipe-card h-100">
@@ -393,4 +417,5 @@ require_once 'includes/functions.php';
     <script src="js/filter.js"></script>
 </body>
 </html>
+
 
