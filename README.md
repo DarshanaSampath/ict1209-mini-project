@@ -28,6 +28,9 @@ Since this project uses PHP and MySQL, you must run it on a local server environ
 3. **Run the Project:**
    - Open your web browser and navigate to `http://localhost/cooking-project/index.php`.
 
+## Documentation
+- 📄 **Final Project Report (PDF):** [ICT1209_Final_Project_Report_The_Cooking_Recipe_Hub.pdf](ICT1209_Final_Project_Report_The_Cooking_Recipe_Hub.pdf)
+
 ## Contributors
-- K.R.M.D.S Kumara - ITT/2024/056
-- L.P.D.T Senarathna - ITT/2024/099
+- R.M.D.S. Kumara - ITT/2024/056
+- L.P.D.T. Senarathna - ITT/2024/099
