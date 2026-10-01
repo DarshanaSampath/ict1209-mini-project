@@ -1,3 +1,6 @@
+<?php
+require_once 'includes/functions.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +17,7 @@
     <header id="navbar-placeholder">    <!-- Bootstrap 5 Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
+            <a class="navbar-brand d-flex align-items-center fw-bold" href="index.php">
                 <img src="images/logo.png" alt="Logo" height="50" class="d-inline-block align-top rounded me-2" style="border-radius: 8px !important;">The Cooking Recipe Hub
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -22,11 +25,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active text-warning fw-bold" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="recipes.html">Recipes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="your-recipes.html">Your Recipes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active text-warning fw-bold" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="recipes.php">Recipes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                    <?php if (isLoggedIn()): ?>
+                        <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link text-danger fw-bold" href="auth/logout.php">Logout (<?= htmlspecialchars($_SESSION['username']); ?>)</a></li>
+                    <?php else: ?>
+                        <li class="nav-item"><a class="nav-link" href="auth/login.php">Login / Register</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

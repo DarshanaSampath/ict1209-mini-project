@@ -1,28 +1,36 @@
- -The Cooking Recipe Hub- 
+# The Cooking Recipe Hub
 
-Welcome to The Cooking Recipe Hub, a digital platform dedicated to sharing culinary traditions alongside celebrated global recipes. This project is built for the ICT 1209 - Web Technologies module.
+Welcome to **The Cooking Recipe Hub**, a digital platform dedicated to sharing culinary traditions alongside celebrated global recipes. This project is built for the **ICT 1209 - Web Technologies** module (Phase 3 Final Submission).
 
- Project Theme-
+## Project Overview
+Our web application serves as a comprehensive digital recipe book. It includes features for viewing dynamic recipes, secure user registration and login, and a secure dashboard for users to submit their own traditional recipes along with images.
 
-Theme: Digital Recipe Book
+## Key Features (Phase 3)
+- **User Authentication:** Secure Login and Registration system using PHP Sessions and `password_hash()` (BCRYPT).
+- **Dynamic Content:** Recipes are fetched directly from a MySQL database using PDO Prepared Statements.
+- **Recipe Submission:** Authenticated users can upload recipes and images via the Dashboard.
+- **Contact Form:** User inquiries are securely saved to the database.
+- **Responsive Design:** Fully responsive layout built with Bootstrap 5.
 
-Our web application serves as a comprehensive digital recipe book focusing on Sri Lankan cuisine. It includes features for recipe searching, dynamic filtering by meal type, and a platform for users to submit their own traditional recipes.
+## Setup Instructions (Local Environment)
+Since this project uses PHP and MySQL, you must run it on a local server environment like XAMPP or WAMP.
 
-Features- (Phase 2)
+1. **Clone the Repository:** 
+   Clone this project into your server's root directory (e.g., `C:\xampp\htdocs\cooking-project`):
+   ```bash
+   git clone https://github.com/DarshanaSampath/ict1209-mini-project.git
+   ```
+2. **Database Setup:**
+   - Open XAMPP and start **Apache** and **MySQL**.
+   - Go to `http://localhost/phpmyadmin/`.
+   - Create a new database named `recipe_book`.
+   - Import the `database.sql` file provided in the root of this project to create the necessary tables (`users`, `recipes`, `messages`).
+3. **Run the Project:**
+   - Open your web browser and navigate to `http://localhost/cooking-project/index.php`.
 
-This frontend implementation includes:
--Responsive Design: Fully responsive layout built with Bootstrap 5.
--Dynamic Content: Real-time JavaScript filtering and searching for recipes (`js/filter.js`).
--Interactive UI: Bootstrap Carousel for featured dishes and hover animations.
--Form Validation:Real-time JavaScript validation for the Contact Us and Recipe Submission forms (`js/validation.js`).
--Pages Included: Home, Recipes, Submit Recipe, About Us, and Contact Us.
+## Documentation
+- 📄 **Final Project Report (PDF):** [ICT1209_Final_Project_Report_The_Cooking_Recipe_Hub.pdf](ICT1209_Final_Project_Report_The_Cooking_Recipe_Hub.pdf)
 
- -Setup Instructions-
-Since this is a static frontend web application (Phase 2), no complex server setup is required.
-1.Clone the repository: `git clone https://github.com/DarshanaSampath/ict1209-mini-project.git`
-2.Open the project folder.
-3.Simply double-click `index.html` to open the website in your preferred web browser.
-
- -Contributors-
-K.R.M.D.S Kumara- ITT/2024/056-Darshana 
-L.P.D.T Senarathna- ITT/2024/099-Dulaj
+## Contributors
+- R.M.D.S. Kumara - ITT/2024/056
+- L.P.D.T. Senarathna - ITT/2024/099
